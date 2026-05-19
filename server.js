@@ -5,12 +5,16 @@ const cors = require('cors');
 const bcrypt = require('bcryptjs');
 require('dotenv').config(); // Lệnh này giúp gọi file .env ra
 
+// Fix DNS resolution cho mongodb+srv
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+
 const app = express();
 app.use(express.json());
 app.use(cors());
 
 // Sử dụng link từ file .env (Nhớ đảm bảo .env của bạn có chữ /Fadotis ở cuối link)
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://admin:admin123.@cluster0.q5lvirq.mongodb.net/';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://admin:admin123.@cluster0.q5lvirq.mongodb.net/Fadotis?retryWrites=true&w=majority';
 
 mongoose.connect(MONGO_URI)
   .then(() => console.log('Đã kết nối MongoDB Database: Fadotis'))

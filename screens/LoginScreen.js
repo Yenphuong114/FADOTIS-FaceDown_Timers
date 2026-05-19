@@ -8,7 +8,7 @@ import * as Google from 'expo-auth-session/providers/google';
 
 WebBrowser.maybeCompleteAuthSession();
 
-const API_URL = 'http://192.168.1.9:3000/api'; 
+const API_URL = process.env.EXPO_PUBLIC_API_URL;
 
 export default function LoginScreen({ navigation }) {
   const [name, setName] = useState('');
