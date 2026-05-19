@@ -112,12 +112,8 @@ export default function SetTimeScreen({ route, navigation }) {
       useNativeDriver: true, 
     }).start();
     if (index === 0) {
-        navigation.navigate({
-          name: 'Home',
-          params: { studyTime, shortBreak, longBreak, cycle },
-          merge: true,
-        });
-      }
+      navigation.navigate('Home');
+    }
       if (index === 1) navigation.navigate('Leaderboard');
       if (index === 2) navigation.navigate('Calendar');
       if (index === 3) navigation.navigate('Profile');
@@ -138,13 +134,7 @@ export default function SetTimeScreen({ route, navigation }) {
       <View style={styles.header}>
         <TouchableOpacity 
           style={styles.backButton} 
-          onPress={() => {
-            navigation.navigate({
-              name: 'Home',
-params: { studyTime: studyTime, shortBreak: shortBreak, longBreak: longBreak, cycle: cycle, isFlipEnabled: isFlipEnabled },
-              merge: true,
-            });
-          }}
+          onPress={() => navigation.goBack()}
         >
           <Ionicons name="arrow-back" size={28} color="#2A3B38" />
         </TouchableOpacity>
@@ -182,6 +172,20 @@ params: { studyTime: studyTime, shortBreak: shortBreak, longBreak: longBreak, cy
           onIncrease={() => setCycle(s => s + 1)} 
           onDecrease={() => setCycle(s => Math.max(1, s - 1))} 
         />
+        
+        <TouchableOpacity 
+          style={styles.confirmButton}
+          onPress={() => {
+            navigation.navigate({
+              name: 'Home',
+              params: { studyTime, shortBreak, longBreak, cycle, isFlipEnabled },
+              merge: true,
+            });
+          }}
+        >
+          <Text style={styles.confirmButtonText}>Xác nhận</Text>
+        </TouchableOpacity>
+
         <View style={{ height: 100 }} />
       </ScrollView>
         <View style={{ height: 100 }} />
@@ -282,6 +286,19 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.05,
     shadowRadius: 2,
+  },
+  confirmButton: {
+    backgroundColor: '#67C3BD',
+    paddingVertical: 12,
+    paddingHorizontal: 40,
+    borderRadius: 10,
+    alignSelf: 'center',
+    marginTop: 10,
+  },
+  confirmButtonText: {
+    color: '#FFF',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   cardTitle: { fontSize: 16, fontWeight: 'bold', color: '#2A3B38', marginBottom: 15 },
   cardControls: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '100%', paddingHorizontal: 30 },

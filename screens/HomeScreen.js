@@ -329,6 +329,10 @@ export default function HomeScreen({ route, navigation }) {
         </View>
       </View>
 
+      <Text style={styles.instructionText}>
+        Hãy úp điện thoại xuống để bắt đầu học
+      </Text>
+
     {/* <TouchableOpacity 
         style={styles.pauseButton}
         onPress={() => setIsRunning(!isRunning)}
@@ -409,6 +413,7 @@ const styles = StyleSheet.create({
   timeText: { fontSize: 65, fontWeight: '900', color: '#67BDB7', letterSpacing: 2 },
   setTimeButton: { backgroundColor: '#BEE3E0', paddingHorizontal: 20, paddingVertical: 8, borderRadius: 10, marginTop: -5 },
   setTimeText: { color: '#529692', fontWeight: 'bold', fontSize: 16 },
+  instructionText: { fontSize: 16, color: '#67BDB7', fontWeight: 'bold', textAlign: 'center', marginTop: 40 },
   pauseButton: { alignSelf: 'center', backgroundColor: '#F2D1CE', width: 90, height: 90, borderRadius: 45, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: '#469E6F', marginTop: 60 },
   
   // --- CSS BOTTOM BAR ---
